@@ -2,21 +2,77 @@
 
 import numpy as np
 from forecast_energy_consumption.params import DATA
-from typing import Tuple, List
 import numpy as np
 import pandas as pd
+from datetime import date, timedelta, datetime
+import os
 
-def load_data(data_path: str):
+
+def load_data():
     """Load data from `data_path` into to memory
     Returns a 2D array with (axis 0) representing timesteps, and (axis 1) columns containing tagets and covariates
     ref: https://github.com/lewagon/data-images/blob/master/DL/time-series-covariates.png?raw=true
     """
 
-    # path '../raw_data/data_preparation.csv'
+    csv_path = os.path.dirname(os.path.dirname(__file__))
 
-    df = pd.read_csv(data_path, index_col=[0])
+    csv_path = os.path.join(csv_path, 'raw_data','data_preparation.csv')
+
+    df = pd.read_csv(csv_path, index_col=[0])
 
     return df
+
+
+
+def df_train_test(Date_debut_test, Nombre_jours_test):
+
+    ''' création des df_train et df_test'''
+
+    #data_path = '../raw_data/data_preparation.csv'
+
+    df = load_data()
+
+    Date_debut_test_time_ = pd.to_datetime(Date_debut_test)
+    Date_fin_test_time_ =  Date_debut_test_time_ + timedelta(Nombre_jours_test)
+    Date_fin_test = str(Date_fin_test_time_)[0:10]
+
+    df_train = df[ (df["Date"] < Date_debut_test)]
+    df_test = df[ (df["Date"] >= Date_debut_test) & (df["Date"] < Date_fin_test)]
+
+    return df_train, df_test
+
+
+def X_y_train_test(Date_debut_test, Nombre_jours_test):
+
+    df_train, df_test = df_train_test(Date_debut_test, Nombre_jours_test)
+
+    X_train = df_train.drop(columns=['Date', 'Code INSEE région', 'Consommation (MW)', 'Thermique (MW)',
+       'Nucléaire (MW)', 'Eolien (MW)', 'Solaire (MW)', 'Hydraulique (MW)',
+       'Pompage (MW)', 'Bioénergies (MW)', 'Ech. physiques (MW)',
+       'Stockage batterie', 'Déstockage batterie', 'Eolien terrestre',
+       'Eolien offshore', 'TCO Thermique (%)', 'TCH Thermique (%)',
+       'TCO Nucléaire (%)', 'TCH Nucléaire (%)', 'TCO Eolien (%)',
+       'TCH Eolien (%)', 'TCO Solaire (%)', 'TCH Solaire (%)', 'Column 30','YEAR', 'MONTH', 'DAY', 'season', 'num_day'])
+
+    y_train = df_train['Consommation (MW)']
+
+    X_test = df_test.drop(columns=['Date', 'Code INSEE région', 'Consommation (MW)', 'Thermique (MW)',
+       'Nucléaire (MW)', 'Eolien (MW)', 'Solaire (MW)', 'Hydraulique (MW)',
+       'Pompage (MW)', 'Bioénergies (MW)', 'Ech. physiques (MW)',
+       'Stockage batterie', 'Déstockage batterie', 'Eolien terrestre',
+       'Eolien offshore', 'TCO Thermique (%)', 'TCH Thermique (%)',
+       'TCO Nucléaire (%)', 'TCH Nucléaire (%)', 'TCO Eolien (%)',
+       'TCH Eolien (%)', 'TCO Solaire (%)', 'TCH Solaire (%)', 'Column 30','YEAR',
+        'MONTH', 'DAY', 'season', 'num_day',
+       ])
+
+    y_test = df_test['Consommation (MW)']
+
+    return X_train,y_train,X_test,y_test
+
+
+
+
 
 
 def clean_data(data: np.ndarray):
