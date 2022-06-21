@@ -1,23 +1,24 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# Make data base, printed on Tue Jun 14 15:49:11 2022
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Tue Jun 21 15:36:12 2022
 
 # Variables
 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:
-# default
-.SHELLFLAGS := -c
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 HOMEBREW_NO_ANALYTICS = 1
 # environment
@@ -29,71 +30,67 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/ludo/code/thomasbordier/forecast_energy_consumption
+CURDIR := /Users/thomasbordier/code/thomasbordier/forecast_energy_consumption
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"90c96d63e4230154cb1307da73de84dd.fr","_translationsConfigFile":"/home/ludo/.vscode-server/data/clp/90c96d63e4230154cb1307da73de84dd.fr/tcf.json","_cacheRoot":"/home/ludo/.vscode-server/data/clp/90c96d63e4230154cb1307da73de84dd.fr","_resolvedLanguagePackCoreLocation":"/home/ludo/.vscode-server/data/clp/90c96d63e4230154cb1307da73de84dd.fr/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/ludo/.vscode-server/data/clp/90c96d63e4230154cb1307da73de84dd.fr/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"575d78304484aa5fa0cbb32d34fd883d.fr","_translationsConfigFile":"/Users/thomasbordier/Library/Application Support/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/tcf.json","_cacheRoot":"/Users/thomasbordier/Library/Application Support/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr","_resolvedLanguagePackCoreLocation":"/Users/thomasbordier/Library/Application Support/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/Users/thomasbordier/Library/Application Support/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /mnt/c/Users/ludov/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /usr/bin/make
 # environment
-GOOGLE_APPLICATION_CREDENTIALS = /home/ludo/code/ben-and-harry/gcp/wagon-bootcamp-352619-925d22d53476.json
-# makefile (from 'Makefile', line 1)
+GOOGLE_APPLICATION_CREDENTIALS = /Users/thomasbordier/code/thomasbordier/gcp/wagon-bootcamp-348314-9a4505e14701.json
+# makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# 'override' directive
-GNUMAKEFLAGS := 
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from 'Makefile', line 47)
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# makefile (from `Makefile', line 47)
 PYPI_USERNAME = <AUTHOR>
 # environment
-VSCODE_CWD = /mnt/c/Users/ludov/AppData/Local/Programs/Microsoft VS Code
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/s8/4k62tj0j2qz1lr9dt431vynr0000gn/T/vscode-ipc-766eaf6c-140e-4218-9d4c-5b4b14447646.sock
 # environment
-PATH = /home/ludo/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:./bin:./node_modules/.bin:/home/ludo/.pyenv/plugins/pyenv-virtualenv/shims:/home/ludo/.rbenv/bin:/home/ludo/.pyenv/plugins/pyenv-virtualenv/shims:/home/ludo/.pyenv/shims:/home/ludo/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/ludov/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/ludov/AppData/Local/Programs/Microsoft VS Code/bin:/usr/local/sbin
+VSCODE_CWD = /Users/thomasbordier/code/thomasbordier/forecast_energy_consumption
+# environment
+PATH = ./bin:./node_modules/.bin:/Users/thomasbordier/.pyenv/plugins/pyenv-virtualenv/shims:/Users/thomasbordier/.pyenv/shims:/Users/thomasbordier/.rbenv/bin:/Users/thomasbordier/.pyenv/plugins/pyenv-virtualenv/shims:/Users/thomasbordier/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
+VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/forecast_energy_consumption
 # environment
-VIRTUAL_ENV = /home/ludo/.pyenv/versions/3.8.12/envs/forecast_energy_consumption
+LaunchInstanceID = 9479757D-47B9-4EE1-8FF9-322DEDD04233
 # environment
 VSCODE_LOG_STACK = false
 # environment
-PYENV_ROOT = /home/ludo/.pyenv
+ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-437cc53b-4bc7-4d43-9d21-791191770584.sock
+PYENV_ROOT = /Users/thomasbordier/.pyenv
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# environment
-SSH_AUTH_SOCK = /tmp/ssh-j82l2dIJBthF/agent.277
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.gwAlcbVjEP/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = :0
-# environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/ludo/code/thomasbordier/forecast_energy_consumption
-# default
-.LOADED := 
+PWD = /Users/thomasbordier/code/thomasbordier/forecast_energy_consumption
 # environment
-SSH_AGENT_PID = 279
-# environment
-WSL_INTEROP = /run/WSL/12213_interop
-# environment
-PULSE_SERVER = /mnt/wslg/PulseServer
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 PYENV_SHELL = zsh
 # environment
-HOME = /home/ludo
+HOME = /Users/thomasbordier
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-LOGNAME = ludo
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/thomasbordier/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+# environment
+LOGNAME = thomasbordier
 # environment
 BUNDLER_EDITOR = code
 # environment
@@ -105,51 +102,63 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
+XPC_FLAGS = 0x0
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
-# default
-MAKE_VERSION := 4.2.1
+SHLVL = 3
 # environment
-USER = ludo
+PYENV_ACTIVATE_SHELL = 1
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = thomasbordier
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-NAME = Code
+TERM_SESSION_ID = DF513932-0E1C-42B8-B813-D24F4833C2D3
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/ludov/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
-MAKE_COMMAND := make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # environment
-OLDPWD = /mnt/c/Users/ludov/AppData/Local/Programs/Microsoft VS Code
+TERM_PROGRAM = Apple_Terminal
 # default
 .VARIABLES := 
+# environment
+TMPDIR = /var/folders/s8/4k62tj0j2qz1lr9dt431vynr0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-PYTHONPATH = /home/ludo/code/ben-and-harry/data-challenges/04-Decision-Science:
-# makefile
-MAKEFLAGS = pqrR
+VSCODE_IPC_HOOK = /Users/thomasbordier/Library/Application Support/Code/1.68.1-main.sock
 # environment
-MFLAGS = -pqrR
+PYTHONPATH = /Users/thomas/code/thomasbordier/data-challenges/04-Decision-Science:
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-NVM_DIR = /home/ludo/.nvm
+TERM_PROGRAM_VERSION = 445
+# environment
+NVM_DIR = /Users/thomasbordier/.nvm
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.3171763.3171769.A09C8E46-6918-4798-81F6-5AC59F054249
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-VSCODE_HANDLES_SIGPIPE = true
+PYENV_VERSION = forecast_energy_consumption
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -163,31 +172,28 @@ LC_ALL = C
 # environment
 PYENV_VIRTUALENV_DISABLE_PROMPT = 1
 # environment
-PYENV_VIRTUAL_ENV = /home/ludo/.pyenv/versions/3.8.12/envs/forecast_energy_consumption
+PYENV_VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/forecast_energy_consumption
 # environment
-HOSTTYPE = x86_64
+SECURITYSESSIONID = 186b2
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
 # environment
-WAYLAND_DISPLAY = wayland-0
-# environment
 PYENV_VIRTUALENV_INIT = 1
 # default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# default
-.RECIPEPREFIX := 
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
-# environment
-WSL_DISTRO_NAME = Ubuntu
+VSCODE_PID = 11719
 # variable set hash-table stats:
-# Load=88/1024=9%, Rehash=0, Collisions=5/116=4%
+ 
+# Load=89/1024=9%, Rehash=0, Collisions=2/115=2%
 
 # Pattern-specific Variable Values
 
@@ -195,9 +201,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2080, inode 259531): 15 files, no impossibilities.
+# . (device 16777234, inode 2961964): 18 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -209,31 +215,34 @@ black:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 11):
+#  commands to execute (from `Makefile', line 11):
 	@black scripts/* forecast_energy_consumption/*.py
+	
 
 all: clean install test black check_code
-#  Command line target.
+#  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/2=0%
 
 install_requirements:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 5):
+#  commands to execute (from `Makefile', line 5):
 	@pip install -r requirements.txt
+	
 
 pypi:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  commands to execute (from `Makefile', line 55):
 	@twine upload dist/* -u $(PYPI_USERNAME)
+	
 
 # Not a target:
 .SUFFIXES:
@@ -244,47 +253,52 @@ pypi:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 10:52:20.645639348
+#  Last modified 2022-06-13 10:36:27
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
+#  commands to execute (from `Makefile', line 14):
 	@coverage run -m pytest tests/*.py
 	@coverage report -m --omit="${VIRTUAL_ENV}/lib/python*"
+	
 
 build:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 49):
+#  commands to execute (from `Makefile', line 49):
 	@python setup.py sdist bdist_wheel
+	
 
 check_code:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 8):
+#  commands to execute (from `Makefile', line 8):
 	@flake8 scripts/* forecast_energy_consumption/*.py
+	
 
 count_lines:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
-#  recipe to execute (from 'Makefile', line 34):
+#  commands to execute (from `Makefile', line 34):
 	@find ./ -name '*.py' -exec  wc -l {} \; | sort -n| awk \
-        '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
+	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
 	@find ./scripts -name '*-*' -exec  wc -l {} \; | sort -n| awk \
-		        '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
+	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
 	@find ./tests -name '*.py' -exec  wc -l {} \; | sort -n| awk \
-        '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
+	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
+	
 
 # Not a target:
 .DEFAULT:
@@ -294,7 +308,7 @@ count_lines:
 
 clean:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
+#  Implicit/static pattern stem: `'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
@@ -315,50 +329,53 @@ clean:
 # automatic
 # ? := 
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 21):
+# Load=8/32=25%, Rehash=0, Collisions=1/10=10%
+#  commands to execute (from `Makefile', line 21):
 	@rm -f */version.txt
 	@rm -f .coverage
 	@rm -fr */__pycache__ */*.pyc __pycache__
 	@rm -fr build dist
 	@rm -fr forecast_energy_consumption-*.dist-info
 	@rm -fr forecast_energy_consumption.egg-info
+	
 
 ftest:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 18):
+#  commands to execute (from `Makefile', line 18):
 	@Write me
+	
 
 pypi_test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 52):
+#  commands to execute (from `Makefile', line 52):
 	@twine upload -r testpypi dist/* -u $(PYPI_USERNAME)
+	
 
 install:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 29):
+#  commands to execute (from `Makefile', line 29):
 	@pip install . -U
+	
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/32=0%
+# Load=15/1024=1%, Rehash=0, Collisions=0/34=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 297 B / avg = 9 B
-# current buf: size = 8162 B / used = 297 B / count = 31 / avg = 9 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 54 / hit rate = 42%
-# hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=1/54=2%
-# Finished Make data base on Tue Jun 14 15:49:11 2022
+# Finished Make data base on Tue Jun 21 15:36:12 2022
 
  
