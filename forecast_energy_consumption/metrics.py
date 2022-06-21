@@ -5,14 +5,14 @@ from sklearn.metrics import mean_absolute_percentage_error
 
 import numpy as np
 #from tensorflow import reduce_mean
-from tensorflow.keras.metrics import mean_absolute_error, mean_absolute_percentage_error
+
 
 
 def mae(y_true: np.ndarray, y_pred: np.ndarray):
     """Returns Mean Absolute Error"""
     pass  # YOUR CODE HERE
 
-def mape(y_true: np.ndarray, y_pred: np.ndarray):
+def mape(y_true, y_pred):
     """Returns Mean Absolute Percentage Error"""
     MAPE = mean_absolute_percentage_error(y_true, y_pred)
 
