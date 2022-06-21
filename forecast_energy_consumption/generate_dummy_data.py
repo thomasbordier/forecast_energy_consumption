@@ -2,7 +2,7 @@ import numpy as np
 from forecast_energy_consumption.params import CROSS_VAL, DATA, TRAIN
 from typing import Tuple
 
-def generate_data_monotonic_increase() -> np.ndarray:
+def generate_data_monotonic_increase():
     """Creates a monotonicly increasing time serie dataset for test purposes
     - shape is (DATA['length'], DATA['n_covariates] + DATA['n_targets']),
     - values are all equals to their respective integer index!
@@ -23,7 +23,7 @@ def generate_data_monotonic_increase() -> np.ndarray:
         + np.expand_dims(indexes, axis=1)
     return data
 
-def generate_data_zeros_and_ones() -> np.ndarray:
+def generate_data_zeros_and_ones():
     """Create a dummy data made of zeros for covariates, and ones for the targets
     e.g:
     data = array(
@@ -39,7 +39,7 @@ def generate_data_zeros_and_ones() -> np.ndarray:
     data[:, DATA["target_column_idx"]] = 1.
     return data
 
-def generate_X_y_zeros_and_ones() -> Tuple[np.ndarray]:
+def generate_X_y_zeros_and_ones():
     """Create a dummy (X,y) tuple made of zeros for covariates, and ones for the targets, just to check if model fit well"""
     length = round(DATA["length"] / TRAIN['stride'])
 
