@@ -14,21 +14,21 @@ from PIL import Image
 #st.markdown("<h1 style='text-align: center; color: black;'>Energy consumption forecast</h1>", unsafe_allow_html=True)
 
 #face = image.imread("image_test.png")
-image = Image.open('image_test.png')
+image = Image.open('image_test.jpeg')
+st.image(image, width=1200)
 
-#st.image(image, caption='DEMO of the output', width=400)
 
 ###
-col1, col2, col3 = st.columns([1,6,1])
+#col1, col2, col3 = st.columns([1,6,1])
 
-with col1:
-    st.write("")
+#with col1:
+#    st.write("")
 
-with col2:
-    st.image(image, caption='DEMO of the output', width=400)
+#with col2:
+#    st.image(image, caption='DEMO of the output', width=1200)
 
-with col3:
-    st.write("")
+#with col3:
+#    st.write("")
 
 ###
 
