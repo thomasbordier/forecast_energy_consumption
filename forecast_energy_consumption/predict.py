@@ -1,6 +1,7 @@
 from joblib import load
 import pandas as pd
 
+
 def predict_output(X_test,y_test, metric = False):
 
     model = load('forecast_energy_consumption/data/model.joblib')

@@ -33,7 +33,7 @@ def X_y_test_knn(y_pred, X_test):
 
 
 
-def knn_production(df_train, X_test, y_pred, Date_debut_test):
+def knn_production(df_train, X_test, y_pred, date_knn, nb_neighbors):
     # import plotly.graph_objects as go
     # ajout de , Date_debut_test ???
 
@@ -50,10 +50,10 @@ def knn_production(df_train, X_test, y_pred, Date_debut_test):
 
     X_test_knn_scalle = min_max.transform(X_test_knn)
 
-    result_knn = knn_model.kneighbors(X_test_knn_scalle,n_neighbors=2)
+    result_knn = knn_model.kneighbors(X_test_knn_scalle,n_neighbors=nb_neighbors)
 
 
-    date_knn = Date_debut_test
+    date_knn
 
     date_list = []
     thermique_list = []
@@ -71,30 +71,20 @@ def knn_production(df_train, X_test, y_pred, Date_debut_test):
 
         df_knn_prediction = df_train_knn.iloc[list_index]
 
-
-        conso = df_knn_prediction['Consommation (MW)'].sum()
-
-        thermique = df_knn_prediction['Thermique (MW)'].sum()
-        eolien = df_knn_prediction['Eolien (MW)'].sum()
-        solaire = df_knn_prediction['Solaire (MW)'].sum()
-        hydraulique = df_knn_prediction['Hydraulique (MW)'].sum()
-        bioenergies = df_knn_prediction['Bioénergies (MW)'].sum()
-        ech_physiques = conso - thermique - eolien - solaire - hydraulique - bioenergies
-
-        thermique_pc = thermique/conso*100
-        eolien_pc = eolien/conso*100
-        solaire_pc = solaire/conso*100
-        hydraulique_pc = hydraulique/conso*100
-        bioenergies_pc = bioenergies/conso*100
-        ech_physiques_pc = ech_physiques/conso*100
+        thermique = df_knn_prediction['Thermique (MW)'].mean()
+        eolien = df_knn_prediction['Eolien (MW)'].mean()
+        solaire = df_knn_prediction['Solaire (MW)'].mean()
+        hydraulique = df_knn_prediction['Hydraulique (MW)'].mean()
+        bioenergies = df_knn_prediction['Bioénergies (MW)'].mean()
+        ech_physiques = df_knn_prediction['Ech. physiques (MW)'].mean()
 
         date_list.append(date_knn)
-        thermique_list.append(thermique_pc)
-        eolien_list.append(eolien_pc)
-        solaire_list.append(solaire_pc)
-        hydraulique_list.append(hydraulique_pc)
-        bioenergies_list.append(bioenergies_pc)
-        ech_physiques_list.append(ech_physiques_pc)
+        thermique_list.append(thermique)
+        eolien_list.append(eolien)
+        solaire_list.append(solaire)
+        hydraulique_list.append(hydraulique)
+        bioenergies_list.append(bioenergies)
+        ech_physiques_list.append(ech_physiques)
 
         Date_knn_datetime = pd.to_datetime(date_knn)
         Date_knn_1 =  Date_knn_datetime + timedelta(1)
