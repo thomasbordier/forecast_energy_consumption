@@ -18,3 +18,5 @@ def consumption_history(Date_debut_test):
 # 'Pompage (MW)',
 
     return date_conso, productions_history
+
+
