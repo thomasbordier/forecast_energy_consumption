@@ -8,6 +8,7 @@ from datetime import date, timedelta, datetime
 import os
 
 
+
 def load_data():
     """Load data from `data_path` into to memory
     Returns a 2D array with (axis 0) representing timesteps, and (axis 1) columns containing tagets and covariates
@@ -26,6 +27,7 @@ def load_data():
 
 def df_train_test(Date_debut_test, Nombre_jours_test):
 
+
     ''' création des df_train et df_test'''
 
     #data_path = '../raw_data/data_preparation.csv'
@@ -43,6 +45,8 @@ def df_train_test(Date_debut_test, Nombre_jours_test):
 
 
 def X_y_train_test(Date_debut_test, Nombre_jours_test):
+
+
 
     df_train, df_test = df_train_test(Date_debut_test, Nombre_jours_test)
 
