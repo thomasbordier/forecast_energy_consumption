@@ -3,23 +3,35 @@ Top level orchestrator of the project. To be called from the CLI.
 It comprises all the "routes" you may want to call
 '''
 from email import header
+from operator import mod
 import numpy as np
 import pandas as pd
 import os
-from ts_boilerplate.dataprep import get_Xi_yi, get_X_y, get_folds, train_test_split
-from ts_boilerplate.model import get_model, fit_model, predict_output
-from ts_boilerplate.metrics import mape, mae
-from ts_boilerplate.params import CROSS_VAL, ROOT_DIR, TRAIN, DATA
+
 from typing import Tuple, List
 import matplotlib.pyplot as plt
+from forecast_energy_consumption.dataprep import X_y_train_test
+from  forecast_energy_consumption.model import get_model, fit_model, save_model
 
 
-def train(data: np.ndarray, print_metrics: bool = False):
+
+
+def train(model_name, date_debut_test, nombre_jours_test):
     """
     Train the model in this package on one fold `data` containing the 2D-array of time-series for your problem
     Returns `metrics_test` associated with the training
     """
-    pass  # YOUR CODE HERE
+
+    X_train,y_train,X_test,y_test = X_y_train_test(date_debut_test, nombre_jours_test)
+
+    model = get_model(model_name)
+
+    model = fit_model(X_train,y_train)
+
+    save_model(model)
+
+    return X_test,y_test
+
 
 
 def cross_validate(data: np.ndarray, print_metrics: bool = False):
