@@ -2,6 +2,7 @@ from joblib import load
 import pandas as pd
 from forecast_energy_consumption.metrics import mape
 
+
 def predict_output(X_test,y_test, metric = False):
 
     model = load('forecast_energy_consumption/data/model.joblib')
