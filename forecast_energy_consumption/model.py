@@ -5,6 +5,9 @@ from tensorflow.keras import Model
 from forecast_energy_consumption.pipeline import pipeline_preproc
 from xgboost import XGBRegressor
 from sklearn.pipeline import make_pipeline
+from sklearn.ensemble import GradientBoostingRegressor
+from catboost import CatBoostRegressor
+
 
 from joblib import dump
 
@@ -12,7 +15,7 @@ from joblib import dump
 # TODO: Should we refacto in a class ? Probably!
 
 
-def get_model(model):
+def get_model(model_name):
     """Instanciate, compile and and return the model of your choice
     xgb = xgboost
     cat = catboostregressor
@@ -21,13 +24,13 @@ def get_model(model):
 
     preproc = pipeline_preproc()
 
-    if model == 'xgb':
+    if model_name == 'xgb':
         model_select = model_xgboost()
 
-    if model == 'cat':
+    if model_name == 'cat':
         model_select = model_catboost()
 
-    if model == 'grad':
+    if model_name == 'grad':
         model_select = model_gradient()
 
     pipeline = make_pipeline(preproc,model_select)
@@ -47,7 +50,7 @@ def save_model(model):
 
     dump(model, 'forecast_energy_consumption/data/model.joblib')
 
-  
+
 
 
 
@@ -64,12 +67,21 @@ def model_xgboost():
 
 
 def model_catboost():
-    pass
+    model_CBR = CatBoostRegressor(depth = 7,
+              learning_rate = 0.0999,
+              iterations = 130)
+
+    return model_CBR
+
 
 
 def model_gradient():
-    pass
+    model_grad = GradientBoostingRegressor(learning_rate= 0.011,
+        max_depth = 4,
+        n_estimators = 1500,
+        subsample= 0.5)
 
+    return model_grad
 
 
 '''
