@@ -1,8 +1,6 @@
 """Prepare Data so as to be used in a Pipelined ML model"""
 
 import numpy as np
-from forecast_energy_consumption.params import DATA
-import numpy as np
 import pandas as pd
 from datetime import date, timedelta, datetime
 import os
