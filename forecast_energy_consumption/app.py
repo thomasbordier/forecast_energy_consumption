@@ -7,6 +7,7 @@ from scipy import misc
 from PIL import Image
 from datetime import timedelta
 from forecast_energy_consumption.dataprep import X_y_train_test
+from forecast_energy_consumption.predict import predict_output
 
 #TODO
 #remonter input date 1 year, graph, 
@@ -57,4 +58,6 @@ st.write('The energy consumption forecast from',date1,'to',date2,'is :')
 #if date2 > datetime.date(2022, 4, 30):
 #    st.error('The ending date should not be higher than 2022/04/30')
 
-#X_train,y_train,X_test,y_test = X_y_train_test(Date_debut_test, Nombre_jours_test)
+X_train,y_train,X_test,y_test = X_y_train_test(str(date1), str(date2))
+
+y_pred = predict_output(X_test,y_test, metric = True)
