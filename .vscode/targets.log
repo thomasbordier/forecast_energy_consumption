@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue Jun 21 17:31:22 2022
+# Make data base, printed on Wed Jun 22 08:41:12 2022
 
 # Variables
 
@@ -29,6 +29,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
+ 
 CURDIR := /Users/thomasbordier/code/thomasbordier/forecast_energy_consumption
 # makefile
 SHELL = /bin/sh
@@ -39,7 +40,6 @@ _ = /usr/bin/make
 # environment
 GOOGLE_APPLICATION_CREDENTIALS = /Users/thomasbordier/code/thomasbordier/gcp/wagon-bootcamp-348314-9a4505e14701.json
 # makefile (from `Makefile', line 1)
- 
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
@@ -48,7 +48,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # makefile (from `Makefile', line 47)
 PYPI_USERNAME = <AUTHOR>
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/s8/4k62tj0j2qz1lr9dt431vynr0000gn/T/vscode-ipc-57ee81ea-8fb5-49c6-8ab9-f76ef3a78cd5.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/s8/4k62tj0j2qz1lr9dt431vynr0000gn/T/vscode-ipc-d1ba2c34-7ae5-47ec-8de9-c3360abc6d8d.sock
 # environment
 VSCODE_CWD = /Users/thomasbordier/code/thomasbordier/forecast_energy_consumption
 # environment
@@ -56,9 +56,9 @@ PATH = ./bin:./node_modules/.bin:/Users/thomasbordier/.pyenv/plugins/pyenv-virtu
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/forecast_energy_consumption
+VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/lewagon
 # environment
-LaunchInstanceID = 9479757D-47B9-4EE1-8FF9-322DEDD04233
+LaunchInstanceID = F04399AB-CBFE-4C94-8392-667B01BED495
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -68,7 +68,7 @@ PYENV_ROOT = /Users/thomasbordier/.pyenv
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.gwAlcbVjEP/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.JnBQ5r1huB/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -109,8 +109,6 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 3
-# environment
-PYENV_ACTIVATE_SHELL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -118,7 +116,7 @@ USER = thomasbordier
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = DF513932-0E1C-42B8-B813-D24F4833C2D3
+TERM_SESSION_ID = 2EC26526-C56D-4120-A557-50939A4BCF42
 # environment
 LESS = -R
 # automatic
@@ -148,13 +146,11 @@ TERM_PROGRAM_VERSION = 445
 # environment
 NVM_DIR = /Users/thomasbordier/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.3171763.3171769.AFB5D51E-E482-43EF-8ECB-ABC080F400B8
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.3171763.3171769.20386063-325B-47B4-8249-53BE73152A5A
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
-# environment
-PYENV_VERSION = forecast_energy_consumption
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
 # environment
@@ -172,7 +168,7 @@ LC_ALL = C
 # environment
 PYENV_VIRTUALENV_DISABLE_PROMPT = 1
 # environment
-PYENV_VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/forecast_energy_consumption
+PYENV_VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/lewagon
 # environment
 SECURITYSESSIONID = 186b2
 # automatic
@@ -190,10 +186,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 15079
+VSCODE_PID = 568
 # variable set hash-table stats:
- 
-# Load=89/1024=9%, Rehash=0, Collisions=2/115=2%
+# Load=87/1024=8%, Rehash=0, Collisions=2/113=2%
 
 # Pattern-specific Variable Values
 
@@ -201,7 +196,7 @@ VSCODE_PID = 15079
 
 # Directories
 
-# . (device 16777234, inode 2961964): 18 files, no impossibilities.
+# . (device 16777232, inode 2961964): 18 files, no impossibilities.
 
 # 18 files, no impossibilities in 1 directories.
 
@@ -290,6 +285,7 @@ count_lines:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 34):
 	@find ./ -name '*.py' -exec  wc -l {} \; | sort -n| awk \
+ 
 	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
 	@find ./scripts -name '*-*' -exec  wc -l {} \; | sort -n| awk \
@@ -376,6 +372,6 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jun 21 17:31:22 2022
+# Finished Make data base on Wed Jun 22 08:41:12 2022
 
  
