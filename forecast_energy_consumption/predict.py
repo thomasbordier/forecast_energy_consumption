@@ -1,7 +1,7 @@
 from joblib import load
 import pandas as pd
 
-def predict_output(X_test,y_test, metric = True):
+def predict_output(X_test,y_test, metric = False):
 
     model = load('forecast_energy_consumption/data/model.joblib')
 
@@ -32,6 +32,9 @@ def predict_output(X_test,y_test, metric = True):
 
         predictions.append(y_i[0])
 
+    if metric:
+        mape = mape(y_test, predictions)
+        return predictions, mape
 
 
     return predictions

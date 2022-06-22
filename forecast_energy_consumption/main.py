@@ -12,6 +12,22 @@ from typing import Tuple, List
 import matplotlib.pyplot as plt
 from forecast_energy_consumption.dataprep import X_y_train_test
 from  forecast_energy_consumption.model import get_model, fit_model, save_model
+from forecast_energy_consumption.predict import predict_output
+
+
+
+
+
+
+def main(model_name,date_debut_test, nombre_jours_test):
+
+    X_test, y_test, df_train = train(model_name,date_debut_test, nombre_jours_test)
+
+    predictions, mape = predict_output(X_test,y_test, metric = False)
+
+
+    return  df_train, X_test, y_test, predictions, mape
+
 
 
 
@@ -30,7 +46,7 @@ def train(model_name, date_debut_test, nombre_jours_test):
 
     save_model(model)
 
-    return X_test,y_test
+    return X_test,y_test, df_train
 
 
 
@@ -49,6 +65,8 @@ def backtest(data: np.ndarray,
              retrain_every: int = 1,
              print_metrics=False,
              plot_metrics=False):
+
+    pass
     """Returns historical forecasts for the entire dataset
     - by training model up to `start_ratio` of the dataset
     - then predicting next values using the model in this package (only predict the last time-steps if `predict_only_last_value` is True)
@@ -62,11 +80,11 @@ def backtest(data: np.ndarray,
     - Print historical predictions if you want a visual check
 
     see https://unit8co.github.io/darts/generated_api/darts.models.forecasting.rnn_model.html#darts.models.forecasting.rnn_model.RNNModel.historical_forecasts
-    """
+
     pass  # YOUR CODE HERE
 
 if __name__ == '__main__':
-    data = pd.read_csv(os.path.join(ROOT_DIR, 'data','raw','data.csv')).to_numpy()
+    data = pd.read_csv(os.path.join( 'data','raw','data.csv')).to_numpy()
     try:
         train(data=data, print_metrics=True)
         # cross_validate(data=data, print_metrics=True)
@@ -82,3 +100,4 @@ if __name__ == '__main__':
         extype, value, tb = sys.exc_info()
         traceback.print_exc()
         ipdb.post_mortem(tb)
+"""
