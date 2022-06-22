@@ -55,8 +55,6 @@ date1 = st.date_input(label= "Starting date :", value= datetime.date(2015, 1, 1)
 
 date2 = date1 + timedelta(days = 13) 
 
-
-
 #date2 = st.date_input(label= "Ending date :", value= datetime.date(2022, 4, 30), min_value=datetime.date(2013, 1, 1), max_value=datetime.date(2022, 4, 30))
 
 st.write('The energy consumption forecast from',date1,'to',date2,'is :')
@@ -66,10 +64,9 @@ date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D')
     
 X_train,y_train,X_test,y_test,df_train = X_y_train_test(str(date1), 14)
 
-y_pred = predict_output(X_test,y_test, metric = True)
+y_pred, mape_pred = predict_output(X_test,y_test, metric = True)
 
-
-date_train, prod_history = consumption_history(df_train)
+date_train, prod_history = consumption_history(str(date1))
 
 fig1 = plt.figure(figsize=(10, 4))
 plt.plot(pd.to_datetime(date_train['Date']),date_train['Consommation (MW)'], label="y_true")
@@ -84,4 +81,6 @@ plt.title("Energy consumption forecast for the 14 next days",fontsize=14, fontwe
 plt.legend()
 st.pyplot(fig2)
 ################
+
+st.write('erreur moyenne:',round(mape_pred,2),'%')
 
