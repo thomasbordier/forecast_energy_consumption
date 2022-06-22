@@ -22,7 +22,7 @@ def train(model_name, date_debut_test, nombre_jours_test):
     Returns `metrics_test` associated with the training
     """
 
-    X_train,y_train,X_test,y_test = X_y_train_test(date_debut_test, nombre_jours_test)
+    X_train,y_train,X_test,y_test, df_train = X_y_train_test(date_debut_test, nombre_jours_test)
 
     model = get_model(model_name)
 
