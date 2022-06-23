@@ -52,7 +52,6 @@ def knn_production(df_train, X_test, y_pred, date_knn, nb_neighbors):
 
     result_knn = knn_model.kneighbors(X_test_knn_scalle,n_neighbors=nb_neighbors)
 
-
     date_knn
 
     date_list = []

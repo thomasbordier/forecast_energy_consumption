@@ -70,7 +70,7 @@ def X_y_train_test(Date_debut_test, Nombre_jours_test):
 
     y_test = df_test['Consommation (MW)']
 
-    return X_train,y_train,X_test,y_test, df_train
+    return X_train, y_train, X_test, y_test, df_train
 
 
 
