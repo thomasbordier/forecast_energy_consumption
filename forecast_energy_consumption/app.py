@@ -19,13 +19,13 @@ from forecast_energy_consumption.knn_production import knn_production
 from forecast_energy_consumption.main import main
 
 #TODO
-#remonter input date 1 year, graph, 
+#remonter input date 1 year, graph,
 # camebert production
 # prediction 14 jours
 # production thomas
 
 '''
-# Energy consumption forecast 
+# Energy consumption forecast
 '''
 
 #st.markdown("<h1 style='text-align: center; color: black;'>Energy consumption forecast</h1>", unsafe_allow_html=True)
@@ -57,15 +57,15 @@ url = 'http://127.0.0.1:5000/predict' #'https://taxifare.lewagon.ai/predict' (ex
 
 date1 = st.date_input(label= "Starting date :", value= datetime.date(2015, 1, 1), min_value=datetime.date(2013, 1, 1), max_value=datetime.date(2022, 4, 30))
 
-date2 = date1 + timedelta(days = 13) 
+date2 = date1 + timedelta(days = 13)
 
 #date2 = st.date_input(label= "Ending date :", value= datetime.date(2022, 4, 30), min_value=datetime.date(2013, 1, 1), max_value=datetime.date(2022, 4, 30))
 
 st.write('The energy consumption forecast from',date1,'to',date2,'is :')
 
 #date_test = pd.DataFrame(['2015-01-01','2015-01-05']).set_index(0).asfreq('D')
-date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D') 
-    
+date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D')
+
 #X_train,y_train,X_test,y_test,df_train = X_y_train_test(str(date1), 14)
 
 df_train, X_test, y_test, predictions, mape = main('xgb',str(date1), 14)
