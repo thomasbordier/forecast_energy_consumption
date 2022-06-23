@@ -35,6 +35,8 @@ def df_train_test(Date_debut_test, Nombre_jours_test):
     Date_fin_test_time_ =  Date_debut_test_time_ + timedelta(Nombre_jours_test)
     Date_fin_test = str(Date_fin_test_time_)[0:10]
 
+    #print(type(Date_debut_test_time))
+
     df_train = df[ (df["Date"] < Date_debut_test)]
     df_test = df[ (df["Date"] >= Date_debut_test) & (df["Date"] < Date_fin_test)]
 
