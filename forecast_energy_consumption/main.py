@@ -42,7 +42,7 @@ def train(model_name, date_debut_test, nombre_jours_test):
 
     model = get_model(model_name)
 
-    model = fit_model(X_train,y_train)
+    model = fit_model(model, X_train,y_train)
 
     save_model(model)
 

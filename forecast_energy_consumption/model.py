@@ -1,7 +1,7 @@
 from webbrowser import get
-import tensorflow as tf
-from tensorflow.keras.layers import Dense, SimpleRNN, Reshape, Lambda, Input
-from tensorflow.keras import Model
+#import tensorflow as tf
+#from tensorflow.keras.layers import Dense, SimpleRNN, Reshape, Lambda, Input
+#from tensorflow.keras import Model
 from forecast_energy_consumption.pipeline import pipeline_preproc
 from xgboost import XGBRegressor
 from sklearn.pipeline import make_pipeline
