@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from forecast_energy_consumption.dataprep import X_y_train_test
 from  forecast_energy_consumption.model import get_model, fit_model, save_model
 from forecast_energy_consumption.predict import predict_output
-
+from forecast_energy_consumption.modif_X_train import X_Test_Plus, X_Test_Moins
 
 
 
@@ -25,8 +25,23 @@ def main(model_name,date_debut_test, nombre_jours_test):
 
     predictions, mape = predict_output(X_test,y_test, metric = True)
 
+    # Création predictions avec + 5 degrés
 
-    return  df_train, X_test, y_test, predictions, mape
+    X_test_plus = X_Test_Plus(X_test)
+
+    predictions_plus_x_celsius = predict_output(X_test_plus,y_test, metric = False)
+
+    # Création predictions avec + 5 degrés
+
+    X_test_moins = X_Test_Moins(X_test)
+
+    predictions_moins_x_celsius = predict_output(X_test_moins,y_test, metric = False)
+
+
+
+    # ajout du retour de predictions_plus_x_celsius et
+
+    return  df_train, X_test, y_test, predictions, mape, predictions_plus_x_celsius, predictions_moins_x_celsius
 
 
 
@@ -47,6 +62,20 @@ def train(model_name, date_debut_test, nombre_jours_test):
     save_model(model)
 
     return X_test,y_test, df_train
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

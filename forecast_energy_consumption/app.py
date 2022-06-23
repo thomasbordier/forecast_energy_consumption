@@ -19,8 +19,14 @@ from forecast_energy_consumption.knn_production import knn_production
 from forecast_energy_consumption.main import main
 import plotly.graph_objects as go
 
+#TODO
+#remonter input date 1 year, graph,
+# camebert production
+# prediction 14 jours
+# production thomas
+
 '''
-# Energy consumption forecast 
+# Energy consumption forecast
 '''
 
 #st.markdown("<h1 style='text-align: center; color: black;'>Energy consumption forecast</h1>", unsafe_allow_html=True)
@@ -52,9 +58,19 @@ url = 'http://127.0.0.1:5000/predict' #'https://taxifare.lewagon.ai/predict' (ex
 
 date1 = st.date_input(label= "Starting date :", value= datetime.date(2020, 1, 1), min_value=datetime.date(2020, 1, 1), max_value=datetime.date(2022, 4, 30))
 
-date2 = date1 + timedelta(days = 13) 
+date2 = date1 + timedelta(days = 13)
 
 date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D') 
+
+#date2 = st.date_input(label= "Ending date :", value= datetime.date(2022, 4, 30), min_value=datetime.date(2013, 1, 1), max_value=datetime.date(2022, 4, 30))
+
+st.write('The energy consumption forecast from',date1,'to',date2,'is :')
+
+#date_test = pd.DataFrame(['2015-01-01','2015-01-05']).set_index(0).asfreq('D')
+date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D')
+
+#X_train,y_train,X_test,y_test,df_train = X_y_train_test(str(date1), 14)
+
 
 df_train, X_test, y_test, predictions, mape = main('xgb',str(date1), 14)
 
@@ -90,6 +106,7 @@ st.write('erreur moyenne:',round(mape,4),'%')
 date_list, thermique_list, eolien_list, solaire_list, hydraulique_list, bioenergies_list, ech_physiques_list = knn_production(df_train, X_test, predictions, str(date1),20)
 
 x = date_list
+
 fig4 = go.Figure(go.Bar(x=x, y= hydraulique_list, name='Hydraulique'))
 fig4.add_trace(go.Bar(x=x, y= eolien_list, name='Eolien'))
 fig4.add_trace(go.Bar(x=x, y= solaire_list, name='Solaire'))
@@ -98,3 +115,4 @@ fig4.add_trace(go.Bar(x=x, y= thermique_list, name='Thermique'))
 fig4.add_trace(go.Bar(x=x, y= ech_physiques_list, name='Echanges physiques'))
 fig4.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
 st.plotly_chart(fig4)
+
