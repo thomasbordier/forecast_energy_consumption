@@ -17,6 +17,7 @@ import numpy as np
 import plotly.express as px
 from forecast_energy_consumption.knn_production import knn_production
 from forecast_energy_consumption.main import main
+import plotly.graph_objects as go
 
 #TODO
 #remonter input date 1 year, graph, 
@@ -55,7 +56,7 @@ from forecast_energy_consumption.main import main
 url = 'http://127.0.0.1:5000/predict' #'https://taxifare.lewagon.ai/predict' (exercice 1, jeudi)
 
 
-date1 = st.date_input(label= "Starting date :", value= datetime.date(2015, 1, 1), min_value=datetime.date(2013, 1, 1), max_value=datetime.date(2022, 4, 30))
+date1 = st.date_input(label= "Starting date :", value= datetime.date(2020, 1, 1), min_value=datetime.date(2020, 1, 1), max_value=datetime.date(2022, 4, 30))
 
 date2 = date1 + timedelta(days = 13) 
 
@@ -65,62 +66,36 @@ st.write('The energy consumption forecast from',date1,'to',date2,'is :')
 
 #date_test = pd.DataFrame(['2015-01-01','2015-01-05']).set_index(0).asfreq('D')
 date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D') 
-    
-#X_train,y_train,X_test,y_test,df_train = X_y_train_test(str(date1), 14)
 
 df_train, X_test, y_test, predictions, mape = main('xgb',str(date1), 14)
 
-#y_pred, mape_pred = predict_output(X_test,y_test, metric = True)
-
 date_train, prod_history = consumption_history(str(date1))
 
-
-############### One year before
-#fig = plt.figure(figsize=(10, 4))
-#plt.plot(pd.to_datetime(date_train['Date']),date_train['Consommation (MW)'], label="y_true")
-#plt.title("Energy consumption 1 year before",fontsize=14, fontweight='bold')
-#plt.legend()
-#st.pyplot(fig1)
-
-#df = px.data.gapminder().query("country=='Canada'")
+st.markdown("<h1 style='text-align: center; color: black;'>Energy consumption forecast 1 year before</h1>", unsafe_allow_html=True)
 fig1 = plt.figure(figsize=(10, 4))
-fig1 = px.line(date_train, x="Date", y="Consommation (MW)", title='Energy consumption 1 year before')
+fig1 = px.line(date_train, x="Date", y="Consommation (MW)")#, title='Energy consumption 1 year before')
 st.plotly_chart(fig1)
-#fig1.show()
-
-################
 
 RPA = prod_history
 
 fig2 = px.pie(values = np.array(prod_history.values).tolist()[0],names = prod_history.columns)
-#fig.show()
+
 st.plotly_chart(fig2)
 
-
-
-################ GR
-
 fig3 = plt.figure(figsize=(10, 4))
-fig3 = px.line(x=date_test.index, y=predictions, title='Energy consumption forecast for the 14 next days')
+fig3 = px.line(x=date_test.index, y=predictions)#, title='Energy consumption forecast for the 14 next days')
 st.plotly_chart(fig3)
-
-################
 
 st.write('erreur moyenne:',round(mape,4),'%')
 
-#fig = px.line(df_energy_weather[['Consommation (MW)','Ech. physiques (MW)']]['2018':'2020'].resample('M').mean(),title='Evolution des échanges physiques par rapport à nos besoins en énergie entre 2018 et 2020')
-
-
-'''
-date_list, thermique_list, eolien_list, solaire_list, hydraulique_list, bioenergies_list, ech_physiques_list = knn_production(df_train, X_test, predictions, date1,20)
+date_list, thermique_list, eolien_list, solaire_list, hydraulique_list, bioenergies_list, ech_physiques_list = knn_production(df_train, X_test, predictions, str(date1),20)
 
 x = date_list
-fig = px.Figure(px.Bar(x=x, y= hydraulique_list, name='Hydraulique'))
-#fig.add_trace(go.Bar(x=x, y= eolien_list, name='Eolien'))
-#fig.add_trace(go.Bar(x=x, y= solaire_list, name='Solaire'))
-#fig.add_trace(go.Bar(x=x, y= bioenergies_list, name='Bioenergies'))
-#fig.add_trace(go.Bar(x=x, y= thermique_list, name='Thermique'))
-#fig.add_trace(go.Bar(x=x, y= ech_physiques_list, name='Echanges physiques'))
-#fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
-fig.show()
-'''
+fig4 = go.Figure(go.Bar(x=x, y= hydraulique_list, name='Hydraulique'))
+fig4.add_trace(go.Bar(x=x, y= eolien_list, name='Eolien'))
+fig4.add_trace(go.Bar(x=x, y= solaire_list, name='Solaire'))
+fig4.add_trace(go.Bar(x=x, y= bioenergies_list, name='Bioenergies'))
+fig4.add_trace(go.Bar(x=x, y= thermique_list, name='Thermique'))
+fig4.add_trace(go.Bar(x=x, y= ech_physiques_list, name='Echanges physiques'))
+fig4.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
+st.plotly_chart(fig4)

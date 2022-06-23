@@ -23,7 +23,7 @@ def main(model_name,date_debut_test, nombre_jours_test):
 
     X_test, y_test, df_train = train(model_name,date_debut_test, nombre_jours_test)
 
-    predictions, mape = predict_output(X_test,y_test, metric = False)
+    predictions, mape = predict_output(X_test,y_test, metric = True)
 
 
     return  df_train, X_test, y_test, predictions, mape
