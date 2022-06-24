@@ -1,4 +1,4 @@
-from tkinter import font
+#from tkinter import font
 from jupyter_server import DEFAULT_STATIC_FILES_PATH
 from pandas import timedelta_range
 import streamlit as st
@@ -58,7 +58,7 @@ url = 'http://127.0.0.1:5000/predict' #'https://taxifare.lewagon.ai/predict' (ex
 
 #st.markdown(".stTextInput > label {font-size:105%; font-weight:bold; color:blue;} ",unsafe_allow_html=True) #for all text-input label sections st.markdown(".stMultiSelect > label {font-size:105%; font-weight:bold; color:blue;} ",unsafe_allow_html=True) #for all multi-select label sections
 
-date1 = st.date_input(label='Date de première prévision :',value= datetime.date(2020, 1, 1), min_value=datetime.date(2020, 1, 1), max_value=datetime.date(2022, 4, 30))
+date1 = st.date_input(label='Date de première prévision :',value= datetime.date(2021, 1, 1), min_value=datetime.date(2020, 1, 1), max_value=datetime.date(2022, 4, 30))
 
 ############
 #st.markdown(
@@ -232,7 +232,7 @@ fig4.add_trace(go.Bar(x=x, y= eolien_list, name='Eolien'))
 fig4.add_trace(go.Bar(x=x, y= solaire_list, name='Solaire'))
 fig4.add_trace(go.Bar(x=x, y= bioenergies_list, name='Bioenergies'))
 fig4.add_trace(go.Bar(x=x, y= thermique_list, name='Thermique'))
-fig4.add_trace(go.Bar(x=x, y= ech_physiques_list, name='Echanges physiques'))
+fig4.add_trace(go.Bar(x=x, y= ech_physiques_list, name="importations d'électricité"))
 fig4.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
 fig4.update_layout(title_text=f"Prévision de reṕartition de production<br>entre le {date1} et le {date2}", title_x=0.5,title_y=0.9, font=dict(family="Roboto",size=14,color="black"))#,fontsize = 8)
 st.plotly_chart(fig4)
