@@ -24,16 +24,18 @@ def main(model_name,date_debut_test, nombre_jours_test):
     X_test, y_test, df_train = train(model_name,date_debut_test, nombre_jours_test)
 
     predictions, mape = predict_output(X_test,y_test, metric = True)
-
+    df_X_test_moins = X_test.copy()
+    df_X_test_plus = X_test.copy()
+    
     # Création predictions avec + 5 degrés
 
-    X_test_plus = X_Test_Plus(X_test)
+    X_test_plus = X_Test_Plus(df_X_test_plus)
 
     predictions_plus_x_celsius = predict_output(X_test_plus,y_test, metric = False)
 
     # Création predictions avec + 5 degrés
 
-    X_test_moins = X_Test_Moins(X_test)
+    X_test_moins = X_Test_Moins(df_X_test_moins)
 
     predictions_moins_x_celsius = predict_output(X_test_moins,y_test, metric = False)
 
