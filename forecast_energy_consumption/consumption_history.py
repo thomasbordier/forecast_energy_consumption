@@ -5,7 +5,7 @@ def consumption_history(Date_debut_test):
 
     df_train, df_test = df_train_test(Date_debut_test, Nombre_jours_test = 14)
 
-    df_history = df_train.tail(366)
+    df_history = df_train.tail(365)
 
     date_conso = df_history[['Date','Consommation (MW)']]
 
