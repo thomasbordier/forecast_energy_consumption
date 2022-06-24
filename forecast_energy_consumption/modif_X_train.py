@@ -3,7 +3,7 @@
 
 def t_plus_x_celsius(value):
 
-    value = value + 5
+    value = value + 2
 
     return value
 
@@ -30,7 +30,7 @@ def X_Test_Plus(X_test):
 
 def t_moins_x_celsius(value):
 
-    value = value - 5
+    value = value - 2
 
     return value
 

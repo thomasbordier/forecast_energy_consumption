@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Thu Jun 23 08:42:18 2022
+# Make data base, printed on Fri Jun 24 08:55:12 2022
 
 # Variables
 
@@ -47,7 +46,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # makefile (from `Makefile', line 47)
 PYPI_USERNAME = <AUTHOR>
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/s8/4k62tj0j2qz1lr9dt431vynr0000gn/T/vscode-ipc-b9c27741-0b30-4936-8c6c-d05dd509b103.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/s8/4k62tj0j2qz1lr9dt431vynr0000gn/T/vscode-ipc-03407b07-f450-4454-bdc5-d2a4bc9121fd.sock
 # environment
 VSCODE_CWD = /Users/thomasbordier/code/thomasbordier/forecast_energy_consumption
 # environment
@@ -57,7 +56,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VIRTUAL_ENV = /Users/thomasbordier/.pyenv/versions/3.8.13/envs/forecast_energy_consumption
 # environment
-LaunchInstanceID = 8F510301-FE88-447C-BF8A-D1C4CB6A38F9
+LaunchInstanceID = E87D85A4-D9D9-4BFA-8539-EC912907CB70
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -67,7 +66,7 @@ PYENV_ROOT = /Users/thomasbordier/.pyenv
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.EBrpGQ8dHg/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.BusxOVtVKI/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -108,8 +107,6 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 3
-# environment
-PYENV_ACTIVATE_SHELL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -117,7 +114,7 @@ USER = thomasbordier
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = E696EC69-0BE1-4521-8995-8A83949249E8
+TERM_SESSION_ID = 353050CB-7799-4EA5-A3F1-C2D027750661
 # environment
 LESS = -R
 # automatic
@@ -147,13 +144,11 @@ TERM_PROGRAM_VERSION = 445
 # environment
 NVM_DIR = /Users/thomasbordier/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.3171763.3171769.7E6CD397-6097-4DBF-ACFD-26381F37F121
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.3171763.3171769.41BFD2C9-F4D5-4388-97A6-2810F12D4B0C
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
-# environment
-PYENV_VERSION = forecast_energy_consumption
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
 # environment
@@ -189,10 +184,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2644
+VSCODE_PID = 561
 # variable set hash-table stats:
- 
-# Load=89/1024=9%, Rehash=0, Collisions=2/115=2%
+# Load=87/1024=8%, Rehash=0, Collisions=2/113=2%
 
 # Pattern-specific Variable Values
 
@@ -200,9 +194,9 @@ VSCODE_PID = 2644
 
 # Directories
 
-# . (device 16777232, inode 2961964): 20 files, no impossibilities.
+# . (device 16777233, inode 2961964): 23 files, no impossibilities.
 
-# 20 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -252,7 +246,7 @@ pypi:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-13 10:36:27
+#  Last modified 2022-06-23 11:32:00
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -275,12 +269,29 @@ build:
 	@python setup.py sdist bdist_wheel
 	
 
-check_code:
+heroku_login:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  commands to execute (from `Makefile', line 66):
+	-@heroku login
+	
+
+check_code:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
 #  commands to execute (from `Makefile', line 8):
 	@flake8 scripts/* forecast_energy_consumption/*.py
+	
+
+heroku_create_app:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 69):
+	-@heroku create ${APP_NAME}
 	
 
 count_lines:
@@ -297,6 +308,15 @@ count_lines:
 	@find ./tests -name '*.py' -exec  wc -l {} \; | sort -n| awk \
 	'{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'
 	@echo ''
+	
+
+deploy_heroku:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 72):
+	-@git push heroku master
+	-@heroku ps:scale web=1
 	
 
 # Not a target:
@@ -338,6 +358,14 @@ clean:
 	@rm -fr forecast_energy_consumption.egg-info
 	
 
+streamlit:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 63):
+	-@streamlit run forecast_energy_consumption/app.py
+	
+
 ftest:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -363,7 +391,7 @@ install:
 	
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/34=0%
+# Load=19/1024=2%, Rehash=0, Collisions=0/38=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -375,6 +403,6 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jun 23 08:42:18 2022
+# Finished Make data base on Fri Jun 24 08:55:12 2022
 
  
