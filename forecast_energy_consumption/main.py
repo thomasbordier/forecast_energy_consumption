@@ -30,13 +30,13 @@ def main(model_name,date_debut_test, nombre_jours_test):
 
     X_test_plus = X_Test_Plus(X_test)
 
-    predictions_plus_x_celsius = predict_output(X_test_plus,y_test, metric = False)
+    predictions_plus_x_celsius = predict_output(X_test_plus, y_test, metric = False)
 
     # Création predictions avec + 5 degrés
 
     X_test_moins = X_Test_Moins(X_test)
 
-    predictions_moins_x_celsius = predict_output(X_test_moins,y_test, metric = False)
+    predictions_moins_x_celsius = predict_output(X_test_moins, y_test, metric = False)
 
 
 
