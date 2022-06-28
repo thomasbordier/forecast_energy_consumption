@@ -11,7 +11,7 @@ def X_y_train_knn(df_train):
     X_train_knn = df_train_knn[['Consommation (MW)','T2M','T2M_MAX','T2M_MIN','RH2M','PRECTOTCORR']]
 
     y_train_knn = df_train_knn['PS']
-    
+
 
     return df_train_knn, X_train_knn, y_train_knn
 
@@ -25,9 +25,9 @@ def X_y_test_knn(y_pred, X_test):
     df_test_knn = pd.merge(left = df_y_pred.reset_index(drop = True)
             , right = X_test.reset_index(drop = True),
             left_index = True, right_index = True)
-    
+
     df_test_knn.rename(columns = {0: 'Consommation (MW)'}, inplace = True)
-     
+
     X_test_knn = df_test_knn[['Consommation (MW)','T2M','T2M_MAX','T2M_MIN','RH2M','PRECTOTCORR']]
     y_test_knn = df_test_knn['PS']
 
@@ -38,13 +38,13 @@ def X_y_test_knn(y_pred, X_test):
 def knn_production(df_train, X_test, y_pred, date_knn, nb_neighbors):
     # import plotly.graph_objects as go
     # ajout de , Date_debut_test ???
-    
+
     df_train_knn, X_train_knn, y_train_knn = X_y_train_knn(df_train)
-    
+
     X_test_knn, y_test_knn = X_y_test_knn(y_pred, X_test)
 
     min_max = MinMaxScaler()
-    
+
 
     X_train_knn_scalle = min_max.fit_transform(X_train_knn)
 

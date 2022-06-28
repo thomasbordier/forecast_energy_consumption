@@ -15,8 +15,11 @@ def consumption_history(Date_debut_test):
         'Solaire (MW)', 'Hydraulique (MW)',  'Bioénergies (MW)',
        'Ech. physiques (MW)']]
 
+    productions_history.rename(columns = {'Thermique (MW)': 'Thermique','Eolien (MW)': 'Eolien','Solaire (MW)': 'Solaire','Hydraulique (MW)': 'Hydraulique',
+                                          'Bioénergies (MW)': 'Bioénergies','Ech. physiques (MW)': 'Importation'}, inplace = True)
+
+
+
 # 'Pompage (MW)',
 
     return date_conso, productions_history
-
-

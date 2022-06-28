@@ -21,37 +21,52 @@ from forecast_energy_consumption.main import main
 import plotly.graph_objects as go
 
 #Main title
-st.markdown(f"<h1 style='text-align: center; color: black; font: Roboto'>Prédiction de consommation d'énergie en région PACA</h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='text-align: center; color: black; font: Roboto'> Prédiction de consommation d'énergie en région PACA</h1>", unsafe_allow_html=True)
 
-with st.sidebar:
-    st.subheader("Sommaire :")
-    #st.markdown(f"<h4 style='text-align: left; color: black; font: Roboto'>Sommaire :</h4>", unsafe_allow_html=True)
-    #st.markdown(f"<h6 style='text-align: left; color: black; font: Roboto'>. Consommation d'énergie</h6>", unsafe_allow_html=True)
-    #st.markdown(f"<h6 style='text-align: left; color: black; font: Roboto'>. Prévision de la consommation</h6>", unsafe_allow_html=True)
-    #st.markdown(f"<h6 style='text-align: left; color: black; font: Roboto'>. Prévision de la répartition de la production</h6>", unsafe_allow_html=True)
-    #st.markdown("[Consommation d'énergie](#section-1)", unsafe_allow_html=True)
-    st.markdown("[Consommation d'energie](#consommation-d-energie)", unsafe_allow_html=True)
-    st.markdown("[Prevision de consommation](#prevision-de-consommation)", unsafe_allow_html=True)
-    st.markdown("[Prevision de repartition de production](#prevision-de-repartition-de-production)", unsafe_allow_html=True)
+#st.write('')
 
 
 url = 'http://127.0.0.1:5000/predict' #'https://taxifare.lewagon.ai/predict' (exercice 1, jeudi)
 
-st.write('')
-st.write('')
-st.write('')
-
-st.header("Consommation d'energie")
-#st.markdown(f"<h3 style='text-align: left; color: black; font: Roboto'> Consommation d'énergie</h3>", unsafe_allow_html=True)
-#st.header()
-
 #Enter the input date
-date1 = st.date_input(label='Date de première prévision :',value= datetime.date(2021, 1, 1), min_value=datetime.date(2020, 1, 1), max_value=datetime.date(2022, 4, 30))
+
+
+date1 = st.date_input(label='Date de première prévision :',value= datetime.date(2022, 3, 1), min_value=datetime.date(2021, 1, 1), max_value=datetime.date(2022, 4, 30))
+
+############
+#st.markdown(
+#       """
+#        <style>
+#@font-face {
+#  font-family: 'Tangerine';
+#  font-style: normal;
+#  font-weight: 1;
+#  src: url(https://fonts.gstatic.com/s/tangerine/v12/IurY6Y5j_oScZZow4VOxCZZM.woff2) format('woff2');
+#  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+#}
+
+#    html, body, [class*="css"]  {
+#    font-family: 'Tangerine';
+#    font-size: 12px;
+#    }
+#    </style>
+#
+#    """,
+#        unsafe_allow_html=True,
+#    )
+
+##############
+
+#st.write('')
+
+
 
 date2 = date1 + timedelta(days = 13)
 
-date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D') 
-df_train, X_test, y_test, predictions, mape, predictions_plus_x_celsius, predictions_moins_x_celsius = main('xgb',str(date1), 14)#(model_name,date_debut_test, nombre_jours_test)
+
+date_test = pd.DataFrame([date1,date2]).set_index(0).asfreq('D')
+
+df_train, X_test, y_test, predictions, mape, predictions_plus_x_celsius, predictions_moins_x_celsius = main('cat',str(date1), 14)#(model_name,date_debut_test, nombre_jours_test)
 
 date_train, prod_history = consumption_history(str(date1))
 
@@ -59,7 +74,9 @@ date_train, prod_history = consumption_history(str(date1))
 fig1 = plt.figure(figsize=(10, 4))
 fig1 = px.line(date_train, x="Date", y="Consommation (MW)")#,title_x = 5)#,title_size = 10)
 fig1.update_layout(title_text=f"Consommation d'énergie<br>entre le {date1 - timedelta(days = 365)} et le {date1}", title_x=0.5,title_y=0.95, font=dict(family="Roboto",size=14,color="black"))#,fontsize = 8)
-
+# test changement police
+fig1.update_layout(font_family="Arial")
+# fin test
 st.plotly_chart(fig1)
 
 RPA = prod_history
@@ -74,6 +91,10 @@ st.write('')
 fig2 = plt.figure(figsize=(10, 4))
 fig2 = px.pie(values = np.array(prod_history.values).tolist()[0],names = prod_history.columns)
 fig2.update_layout(title_text=f"Répartition de la consommation<br>entre le {date1 - timedelta(days = 365)} et le {date1}", title_x=0.5,title_y=0.96, font=dict(family="Roboto",size=14,color="black"))#,fontsize = 8)
+# test changement police
+fig2.update_layout(font_family="Arial")
+# fin test
+
 st.plotly_chart(fig2)
 
 st.write('')
@@ -86,27 +107,36 @@ list_date = []
 date_pour_list = str(date1)
 
 for i in range(0,14):
+
+
+
     list_date.append(date_pour_list)
     Date_datetime = pd.to_datetime(date_pour_list)
     Date_plus_1 =  Date_datetime + timedelta(1)
     date_pour_list = str(Date_plus_1)[0:10]
-    
-#st.markdown(f"<h3 style='text-align: left; color: black; font: Roboto'>Prévision de consommation</h3>", unsafe_allow_html=True)
-st.header('Prevision de consommation')
+
+
+
 
 # Prediction graph of energy consumption
-fig3 = plt.figure(figsize=(10, 4))
 
+fig3 = plt.figure(figsize=(10, 4))
 layout = go.Layout(yaxis = dict(title = 'Consommation (MW)',zeroline=True,showline = True),xaxis = dict(title = 'Date', zeroline = True,showline = True),
                    legend=dict(yanchor="bottom",y=1,xanchor="left",x=-10*0.01,font=dict(family="Roboto",size=10,color="black")))
 
-fig3 = go.Figure([go.Scatter(x=date_test.index,y=predictions,line=dict(color='rgb(0,100,80)'),mode='lines',name="Prédiction"),
-    go.Scatter(x=list_date+list_date[::-1],y=predictions_plus_x_celsius+predictions_moins_x_celsius[::-1], fill='toself',fillcolor='rgba(0,100,80,0.2)',
-               line=dict(color='rgba(255,255,255,0)'), hoverinfo="skip", showlegend=True, name="Erreur",)],layout=layout)
 
-fig3.add_trace(go.Scatter(x=list_date,y=y_test,name="Réelle", line = go.Line(color = "blue",dash = "dash")))
+
+fig3 = go.Figure([go.Scatter(x=date_test.index,y=predictions,line=dict(color='rgb(0,100,80)'),mode='lines',name="Consommation prédite"),
+    go.Scatter(x=list_date+list_date[::-1],y=predictions_plus_x_celsius+predictions_moins_x_celsius[::-1], fill='toself',fillcolor='rgba(0,100,80,0.2)',
+               line=dict(color='rgba(255,255,255,0)'), hoverinfo="skip", showlegend=True, name="Interval de confiance",)],layout=layout)
+
+
+fig3.add_trace(go.Scatter(x=list_date,y=y_test,name="Consommation réelle", line = go.Line(color = "blue",dash = "dash")))
 
 fig3.update_layout(title_text=f"Prévision de consommation<br>entre le {date1} et le {date2}", title_x=0.5,title_y=0.9, font=dict(family="Roboto",size=14,color="black"))#,fontsize = 8)
+
+fig3.update_layout(font_family="Arial")
+
 
 st.plotly_chart(fig3)
 
@@ -126,20 +156,23 @@ x = date_list
 layout2 = go.Layout(yaxis = dict(title = 'Production (MW)',zeroline=True,showline = True),xaxis = dict(title = 'Date', zeroline = True,showline = True)
                     ,legend=dict(yanchor="top",y=0.99,xanchor="left",x=1,font=dict(family="Roboto",size=10,color="black")))
 
-st.markdown(f"<h3 style='text-align: left; color: black; font: Roboto'>Prévision répartition de production</h3>", unsafe_allow_html=True)
-
-
-
 #Prediction graph of energy production
-st.header('Prevision de repartition de production')
 fig4 = plt.figure(figsize=(10, 4))
 fig4 = go.Figure(go.Bar(x=x, y= hydraulique_list, name='Hydraulique'),layout=layout2)
 fig4.add_trace(go.Bar(x=x, y= eolien_list, name='Eolien'))
 fig4.add_trace(go.Bar(x=x, y= solaire_list, name='Solaire'))
 fig4.add_trace(go.Bar(x=x, y= bioenergies_list, name='Bioenergies'))
 fig4.add_trace(go.Bar(x=x, y= thermique_list, name='Thermique'))
+
 fig4.add_trace(go.Bar(x=x, y= ech_physiques_list, name="Importations d'électricité"))
 fig4.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
 fig4.update_layout(title_text=f"Prévision de répartition de production<br>entre le {date1} et le {date2}", title_x=0.5,title_y=0.9, font=dict(family="Roboto",size=14,color="black"))#,fontsize = 8)
-st.plotly_chart(fig4)
 
+
+
+fig4.update_layout(font_family="Arial")
+
+
+
+
+st.plotly_chart(fig4)
