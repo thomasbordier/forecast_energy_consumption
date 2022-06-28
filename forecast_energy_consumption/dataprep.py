@@ -1,11 +1,9 @@
 """Prepare Data so as to be used in a Pipelined ML model"""
-
-import numpy as np
-from forecast_energy_consumption.params import DATA
 import numpy as np
 import pandas as pd
 from datetime import date, timedelta, datetime
 import os
+
 
 
 def load_data():
@@ -26,6 +24,7 @@ def load_data():
 
 def df_train_test(Date_debut_test, Nombre_jours_test):
 
+
     ''' création des df_train et df_test'''
 
     #data_path = '../raw_data/data_preparation.csv'
@@ -36,6 +35,8 @@ def df_train_test(Date_debut_test, Nombre_jours_test):
     Date_fin_test_time_ =  Date_debut_test_time_ + timedelta(Nombre_jours_test)
     Date_fin_test = str(Date_fin_test_time_)[0:10]
 
+    #print(type(Date_debut_test_time))
+
     df_train = df[ (df["Date"] < Date_debut_test)]
     df_test = df[ (df["Date"] >= Date_debut_test) & (df["Date"] < Date_fin_test)]
 
@@ -43,6 +44,8 @@ def df_train_test(Date_debut_test, Nombre_jours_test):
 
 
 def X_y_train_test(Date_debut_test, Nombre_jours_test):
+
+
 
     df_train, df_test = df_train_test(Date_debut_test, Nombre_jours_test)
 
@@ -68,7 +71,7 @@ def X_y_train_test(Date_debut_test, Nombre_jours_test):
 
     y_test = df_test['Consommation (MW)']
 
-    return X_train,y_train,X_test,y_test
+    return X_train, y_train, X_test, y_test, df_train
 
 
 

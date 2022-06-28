@@ -1,8 +1,11 @@
+from forecast_energy_consumption.dataprep import df_train_test
 
 
+def consumption_history(Date_debut_test):
 
-def consumption_history(df_train):
-    df_history = df_train.tail(366)
+    df_train, df_test = df_train_test(Date_debut_test, Nombre_jours_test = 14)
+
+    df_history = df_train.tail(365)
 
     date_conso = df_history[['Date','Consommation (MW)']]
 
@@ -11,6 +14,11 @@ def consumption_history(df_train):
     productions_history = productions_history[['Thermique (MW)','Eolien (MW)',
         'Solaire (MW)', 'Hydraulique (MW)',  'Bioénergies (MW)',
        'Ech. physiques (MW)']]
+
+    productions_history.rename(columns = {'Thermique (MW)': 'Thermique','Eolien (MW)': 'Eolien','Solaire (MW)': 'Solaire','Hydraulique (MW)': 'Hydraulique',
+                                          'Bioénergies (MW)': 'Bioénergies','Ech. physiques (MW)': 'Importation'}, inplace = True)
+
+
 
 # 'Pompage (MW)',
 

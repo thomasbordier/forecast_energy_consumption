@@ -1,8 +1,31 @@
 import os
-#from dotenv import load_dotenv
 
+#TRAINING_DATE = '2021-01-01'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#from dotenv import load_dotenv
 ## CREDENTIALS AND PATHS
 #load_dotenv()
+'''
 API_KEY = os.getenv('API_KEY')
 
 ## DIR PARAMS
@@ -30,3 +53,4 @@ CROSS_VAL = dict(
     fold_length = 200,
     fold_stride = 100,
 )
+'''
